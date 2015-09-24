@@ -32,6 +32,6 @@ after_script:
 - git diff -b
 - git add --all
 - git config --global user.email "xichekolas@gmail.com"
-- git config --global user.name "Travis"
+- git config --global user.name "Andrew Farmer"
 - git commit -m "travis deploy $(date '+%m/%d/%y %H:%M')"
 - git push origin master
