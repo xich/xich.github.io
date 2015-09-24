@@ -1,1 +1,3 @@
-# xich.github.io
+Viewing changes locally:
+
+  cabal run watch
