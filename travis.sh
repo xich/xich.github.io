@@ -24,7 +24,7 @@ then
     git add --all
     git config --global user.email "xichekolas@gmail.com"
     git config --global user.name "Andrew Farmer"
-    ( git commit -m "travis deploy `date '+%m/%d/%y %H:%M'`" ; get push origin master) || true # in case no changes
+    ( git commit -m "travis deploy `date '+%m/%d/%y %H:%M'`" ; git push origin master) || true # in case no changes
 else
     echo "Skipping rebuild because master is already newer than source."
 fi
