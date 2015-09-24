@@ -1,5 +1,4 @@
 # intentionally no language: Haskell
-sudo: required
 branches:
   only:
   - source
@@ -21,8 +20,9 @@ before_install:
 - git submodule init
 - git submodule update
 install:
-- sudo apt-get update
-- sudo apt-get install libghc-hakyll-dev
+- cabal update # sudo apt-get update
+- cabal configure # sudo apt-get install libghc-hakyll-dev
+- cabal install --only-dependencies
 script:
 - cabal run site -- build
 after_script:
