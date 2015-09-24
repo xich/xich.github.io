@@ -2,15 +2,17 @@ language: Haskell
 branches:
   only:
   - source
-addons:
-  apt:
-    sources:
-    - debian-sid
-    packages:
-    - libghc-hakyll-dev
+# addons:
+#   apt:
+#     sources:
+#     - debian-sid
+#     packages:
+#     - libghc-hakyll-dev
 git:
   submodules: false # Don't init and update the _site submodule automatically
 before_install:
+- sudo apt-get update
+- sudo apt-get install libghc-hakyll-dev
 - openssl aes-256-cbc -K $encrypted_9faceced67a1_key -iv $encrypted_9faceced67a1_iv -in travis_rsa.enc -out travis_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 travis_rsa
