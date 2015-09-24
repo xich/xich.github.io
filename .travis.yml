@@ -1,7 +1,9 @@
-language: Haskell
+# intentionally no language: Haskell
+sudo: required
 branches:
   only:
   - source
+addons: {apt: {packages: [cabal-install-1.22,ghc-7.10.2],sources: [hvr-ghc]}}
 # addons:
 #   apt:
 #     sources:
@@ -11,6 +13,7 @@ branches:
 git:
   submodules: false # Don't init and update the _site submodule automatically
 before_install:
+- export PATH=/opt/ghc/7.10.2/bin:/opt/cabal/1.22/bin:$PATH
 - sudo apt-get update
 - sudo apt-get install libghc-hakyll-dev
 - openssl aes-256-cbc -K $encrypted_9faceced67a1_key -iv $encrypted_9faceced67a1_iv -in travis_rsa.enc -out travis_rsa -d
