@@ -18,8 +18,8 @@ before_install:
 - chmod 600 travis_rsa
 - ssh-add travis_rsa
 - git submodule init
-- git submodule update
-- ( cd _site ; git pull origin master )
+- git submodule update --remote
+- ( cd _site ; git branch ; git status ; git log ; git pull origin master )
 install:
 - cabal sandbox init
 - cabal update # sudo apt-get update

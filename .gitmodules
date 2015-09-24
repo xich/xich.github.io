@@ -2,3 +2,4 @@
 	path = _site
 	url = git@github.com:xich/xich.github.io.git
     ignore = all
+    branch = master
