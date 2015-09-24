@@ -1,0 +1,24 @@
+language: Haskell
+
+branches:
+  only:
+    - source
+
+addons:
+  apt:
+    sources:
+    - debian-sid
+    packages:
+    - libghc-hakyll-dev
+
+before_script:
+  - ghc-pkg list
+  - ( cd _site ; git checkout master ; git pull origin master )
+
+script:
+  - cabal run site -- build
+
+after_script:
+  - cd _site
+  - git status
+  - git diff -b
