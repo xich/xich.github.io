@@ -1,15 +1,17 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
-
+import Hakyll
+import Control.Monad
+import Data.Monoid (mappend)
+import Data.String
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+    forM_ ["images", "papers", "js"] $ \ dir -> do
+        match (fromString $ dir ++ "/*") $ do
+            route   idRoute
+            compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
@@ -45,6 +47,8 @@ main = hakyll $ do
 
     match "index.html" $ do
         route idRoute
+        compile copyFileCompiler
+{-
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
@@ -56,6 +60,7 @@ main = hakyll $ do
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
+-}
 
     match "templates/*" $ compile templateCompiler
 
